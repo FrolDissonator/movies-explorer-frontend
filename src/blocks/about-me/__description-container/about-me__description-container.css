@@ -1,0 +1,19 @@
+.about-me__description-container {
+    min-height: 205px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 1279px) {
+    .about-me__description-container {
+        min-height: 213px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .about-me__description-container {
+        display: block;
+        min-height: auto;
+    }
+}

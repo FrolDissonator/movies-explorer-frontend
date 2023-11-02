@@ -1,0 +1,11 @@
+.footer__sources {
+    display: flex;
+}
+
+@media screen and (max-width: 767px) {
+    .footer__sources {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+}

@@ -1,0 +1,27 @@
+.promo__container {
+    background-image: url('../../../images/praktikum-logo.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    min-height: 320px;
+    margin-top: 82px;
+    margin-bottom: 122px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@media screen and (max-width: 1279px) {
+    .promo__container {
+        margin-top: 224px;
+        margin-bottom: 240px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .promo__container {
+        min-height: 248px;
+        margin-top: 142px;
+        margin-bottom: 180px;
+    }
+}

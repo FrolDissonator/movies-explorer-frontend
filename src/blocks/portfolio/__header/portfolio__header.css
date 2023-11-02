@@ -1,0 +1,19 @@
+.portfolio__header {
+    color: rgba(139, 139, 139, 1);
+    font-size: 18px;
+    line-height: 1.1;
+    font-weight: 400;
+    margin: 0 70px;
+}
+
+@media screen and (max-width: 1279px) {
+    .portfolio__header {
+        margin: 0 50px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .portfolio__header {
+        margin: 0 14px;
+    }
+}

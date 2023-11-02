@@ -1,0 +1,13 @@
+.about-me__link {
+    color: rgba(255, 255, 255, 1);
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 4ms;
+}
+
+.about-me__link:hover {
+    opacity: 0.7;
+}

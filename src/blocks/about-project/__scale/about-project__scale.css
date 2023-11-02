@@ -1,0 +1,27 @@
+.about-project__scale {
+    margin-left: 70px;
+    margin-right: 70px;
+    padding-top: 110px;
+    padding-bottom: 105px;
+    display: grid;
+    grid-template-columns: 20% 80%;
+}
+
+@media screen and (max-width: 1279px) {
+    .about-project__scale {
+        margin-left: 50px;
+        margin-right: 50px;
+        padding-top: 93px;
+        padding-bottom: 85px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .about-project__scale {
+        margin-left: 18px;
+        margin-right: 18px;
+        padding-top: 60px;
+        padding-bottom: 58px;
+        grid-template-columns: 35% 65%;
+    }
+}

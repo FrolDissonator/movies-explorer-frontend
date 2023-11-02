@@ -1,0 +1,16 @@
+.about-me__info {
+    color: rgba(255, 255, 255, 1);
+    max-width: 600px;
+}
+
+@media screen and (max-width: 1279px) {
+    .about-me__info {
+        max-width: 364px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .about-me__info {
+        max-width: 292px;
+    }
+}

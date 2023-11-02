@@ -1,0 +1,7 @@
+.navtab {
+    min-height: 66px;
+    background-color: rgba(39, 39, 39, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

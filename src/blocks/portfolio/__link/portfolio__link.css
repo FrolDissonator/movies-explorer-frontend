@@ -1,0 +1,16 @@
+.portfolio__link {
+    border-bottom: 1px solid rgba(230, 230, 230, 1);
+    display: flex;
+    justify-content: space-between;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 4ms;
+}
+
+.portfolio__link:hover {
+    opacity: 0.7;
+}
+
+.portfolio__link:last-of-type {
+    border-bottom: none;
+}

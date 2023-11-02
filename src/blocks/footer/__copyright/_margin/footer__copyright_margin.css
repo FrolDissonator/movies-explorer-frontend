@@ -1,0 +1,10 @@
+.footer__copyright_margin {
+    margin-right: 20px;
+}
+
+@media screen and (max-width: 767px) {
+    .footer__copyright_margin {
+        margin-right: 0;
+        margin-bottom: 12px;
+    }
+}

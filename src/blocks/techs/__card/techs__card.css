@@ -1,0 +1,19 @@
+.techs__card {
+    min-height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(255, 255, 255, 1);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.2;
+    background-color: rgba(48, 48, 48, 1);
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 1279px) {
+    .techs__card {
+        min-height: 57px;
+        font-size: 12px;
+    }
+}
