@@ -17,5 +17,6 @@
         flex-direction: column-reverse;
         min-width: 292px;
         margin: 60px 14px 70px;
+        align-items: center;
     }
 }

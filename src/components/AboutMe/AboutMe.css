@@ -1,5 +1,6 @@
 @import url('../../blocks/section/__title-container/section__title-container.css');
 @import url('../../blocks/section/__title/section__title.css');
+@import url('../../blocks/section/__paragraph/section__paragraph.css');
 @import url('../../blocks/about-me/about-me.css');
 @import url('../../blocks/about-me/__container/about-me__container.css');
 @import url('../../blocks/about-me/__info/about-me__info.css');
