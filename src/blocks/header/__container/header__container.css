@@ -1,6 +1,8 @@
 .header__container {
     margin: 18px 70px 18px;
-    outline: 1px solid red;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 @media screen and (max-width: 1279px) {

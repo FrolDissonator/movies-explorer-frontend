@@ -1,0 +1,13 @@
+.search-form__container {
+    width: 100%;
+    background-color: rgba(47, 47, 47, 1);
+    border-radius: 40px;
+    margin-top: 60px;
+    margin-bottom: 41px;
+}
+
+@media screen and (max-width: 767px) {
+    .search-form__container {
+        margin-top: 80px;
+    }
+}
