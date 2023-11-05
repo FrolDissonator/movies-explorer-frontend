@@ -5,12 +5,16 @@ function SearchForm() {
         <section className='search-form'>
             <div className='search-form__container'>
                 <form className='search-form__form'>
-                    <input className='search-form__input' type='search' placeholder='Фильм' />
-                    <button className='search-form__button' type='submit'></button>
+                    <div className='search-form__line'>
+                        <input className='search-form__input' type='search' placeholder='Фильм' />
+                        <button className='search-form__button' type='submit'></button>
+                    </div>
+                    <label className='search-form__checkbox-container'>
+                        <input type='checkbox' className='search-form__checkbox-invisible' />
+                        <span className='search-form__checkbox-visible'></span>
+                        <span className='search-form__text'>Короткометражки</span>
+                    </label>
                 </form>
-            </div>
-            <div className='search-form__checkbox-container'>
-                    
             </div>
         </section>
     )

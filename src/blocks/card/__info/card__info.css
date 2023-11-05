@@ -1,0 +1,19 @@
+.card__info {
+    display: flex;
+    flex-direction: column;
+    margin: 9px 16px 16px;
+    background-color: rgba(34, 34, 34, 1);
+}
+
+@media screen and (max-width: 1279px) {
+    .card__info {
+        margin: 8px 14px 14px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .card__info {
+        margin-top: 7px;
+        margin-right: 10px;
+    }
+}

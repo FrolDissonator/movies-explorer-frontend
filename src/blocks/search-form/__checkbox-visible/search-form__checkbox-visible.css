@@ -1,0 +1,10 @@
+.search-form__checkbox-visible {
+    min-width: 36px;
+    min-height: 20px;
+    background-image: url('../../../images/checkbox-off.svg');
+    background-repeat: no-repeat;
+}
+
+.search-form__checkbox-visible:hover {
+    cursor: pointer;
+}

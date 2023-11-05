@@ -5,8 +5,8 @@
     background-color: rgba(47, 47, 47, 1);
     color: rgba(139, 139, 139, 1);
     padding-left: 22px;
-    min-height: 46px;
     width: calc(100% - 40px);
+    min-height: 46px;
     border-radius: 40px;
     border: none;
     outline: none;

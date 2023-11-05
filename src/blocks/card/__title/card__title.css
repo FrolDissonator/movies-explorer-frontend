@@ -1,0 +1,13 @@
+.card__title {
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 1);
+    margin: 0;
+}
+
+@media screen and (max-width: 767px) {
+    .card__title {
+        font-size: 12px;
+    }
+}
