@@ -27,7 +27,7 @@ function Login({ onLogin }) {
             </div>
             <h2 className='entrance__title'>Рады видеть!</h2>
             <form className='entrance__form' onSubmit={handleSubmit}>
-                <span className='entrance__placeholder'>E-mail</span>
+                <label className='entrance__placeholder'>E-mail</label>
                 <input 
                 className='entrance__input'
                 required
@@ -37,7 +37,7 @@ function Login({ onLogin }) {
                 autoComplete='username'
                 ></input>
                 <span className='entrance__error'></span>
-                <span className='entrance__placeholder'>Пароль</span>
+                <label className='entrance__placeholder'>Пароль</label>
                 <input 
                 className='entrance__input'
                 required
@@ -48,10 +48,10 @@ function Login({ onLogin }) {
                 autoComplete='current-password'
                 ></input>
                 <span className='entrance__error'></span>
-                <button className='entrance__button' type='submit'>Ещё не зарегистрированы?</button>
+                <button className='entrance__button' type='submit'>Войти</button>
             </form>
             <div className='entrance__caption'>
-                <p className='entrance__subtitle'>Уже зарегистрированы?
+                <p className='entrance__subtitle'>Ещё не зарегистрированы?
                     <Link className='entrance__link' to='/signup'>Регистрация</Link>
                 </p>
             </div>

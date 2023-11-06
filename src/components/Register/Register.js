@@ -32,7 +32,7 @@ function Register({ onRegister }) {
             </div>
             <h2 className='entrance__title'>Добро пожаловать!</h2>
             <form className='entrance__form' onSubmit={handleSubmit}>
-                <span className='entrance__placeholder'>Имя</span>
+                <label className='entrance__placeholder'>Имя</label>
                 <input 
                 className='entrance__input'
                 required
@@ -41,7 +41,7 @@ function Register({ onRegister }) {
                 onChange={handleChangeName}
                 ></input>
                 <span className='entrance__error'></span>
-                <span className='entrance__placeholder'>E-mail</span>
+                <label className='entrance__placeholder'>E-mail</label>
                 <input 
                 className='entrance__input'
                 required
@@ -51,7 +51,7 @@ function Register({ onRegister }) {
                 autoComplete='username'
                 ></input>
                 <span className='entrance__error'></span>
-                <span className='entrance__placeholder'>Пароль</span>
+                <label className='entrance__placeholder'>Пароль</label>
                 <input 
                 className='entrance__input'
                 required

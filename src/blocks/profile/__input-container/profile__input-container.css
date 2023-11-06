@@ -1,0 +1,12 @@
+.profile__input-container {
+    display: flex;
+    align-items: flex-start;
+    border-bottom: 1px solid rgba(66, 66, 66, 1);
+    margin-bottom: 17px;
+    position: relative;
+}
+
+.profile__input-container:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+}
