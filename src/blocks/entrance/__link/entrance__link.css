@@ -5,6 +5,7 @@
     font-size: 14px;
     line-height: 1.2;
     font-weight: 400;
+    text-decoration: none;
     cursor: pointer;
     transition: opacity 4ms;
 }
