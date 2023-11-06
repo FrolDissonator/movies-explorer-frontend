@@ -1,10 +1,15 @@
+import React from 'react';
 import './Header.css';
 import Navigation from '../Navigation/Navigation';
+import { useLocation } from 'react-router-dom';
 
 function Header() {
-    return(
-        <header className='header'>
-                <Navigation />
+    const location = useLocation();
+    const isBlackBackground = location.pathname !== '/';
+
+    return (
+        <header className={`header ${isBlackBackground ? 'header_background_black' : ''}`}>
+            <Navigation />
         </header>
     );
 }

@@ -5,6 +5,12 @@
     text-decoration: none;
     color: rgba(255, 255, 255, 1);
     margin-right: 30px;
+    cursor: pointer;
+    transition: opacity 4ms;
+}
+
+.header__auth-link:hover {
+    opacity: 0.7;
 }
 
 @media screen and (max-width: 767px) {

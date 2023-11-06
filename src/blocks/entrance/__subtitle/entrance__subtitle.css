@@ -1,0 +1,13 @@
+.entrance__subtitle {
+    margin: 0;
+    color: rgba(139, 139, 139, 1);
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 400;
+}
+
+@media screen and (max-width: 767px) {
+    .entrance__subtitle {
+        font-size: 12px;
+    }
+}
