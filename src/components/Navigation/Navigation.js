@@ -24,6 +24,7 @@ function Navigation() {
                     <div className={`header__account-icon ${isGreyBackground ? 'header__account-icon_background_grey' : ''}`}></div>
                     </Link>
                 </div>
+                <button type='button' className='header__menu-button'></button>
             {/* ) : ( */}
                 {/* <div className='header__auth-container'>
                     <Link to='/signup' className='header__auth-link'>Регистрация</Link>

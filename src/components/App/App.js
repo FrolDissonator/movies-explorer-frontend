@@ -10,6 +10,7 @@ import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
 import PageNotFound from '../PageNotFound/PageNotFound';
+import MenuPopup from '../MenuPopup/MenuPopup';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Header />
             <Main />
             <Footer />
+            <MenuPopup />
           </>
         } />
         <Route path='/movies' element={
@@ -27,6 +29,7 @@ function App() {
             <Header />
             <Movies />
             <Footer />
+            <MenuPopup />
           </>
         } />
         <Route path='/saved-movies' element={
@@ -34,12 +37,14 @@ function App() {
             <Header />
             <SavedMovies />
             <Footer />
+            <MenuPopup />
           </>
         } />
         <Route path='/profile' element={
           <>
             <Header />
             <Profile />
+            <MenuPopup />
           </>
         } />
         <Route path='/signup' element={<Register />} />

@@ -1,0 +1,14 @@
+.menu-popup {
+    min-width: 520px;
+    height: 100vh;
+    position: fixed;
+    right: 0;
+    background-color: rgba(32, 32, 32, 1);
+    display: none;
+}
+
+@media screen and (max-width: 767px) {
+    .menu-popup {
+        min-width: 100vw;
+    }
+}

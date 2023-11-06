@@ -10,3 +10,4 @@
 @import url('../../blocks/header/__auth-container/header__auth-container.css');
 @import url('../../blocks/header/__auth-link/header__auth-link.css');
 @import url('../../blocks/header/__auth-link/_type/header__auth-link_type_sign-in.css');
+@import url('../../blocks/header/__menu-button/header__menu-button.css');
