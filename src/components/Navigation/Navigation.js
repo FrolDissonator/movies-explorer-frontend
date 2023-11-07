@@ -1,13 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Navigation.css';
 import logo from '../../images/logo.svg';
-import { Link } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import MenuPopup from '../MenuPopup/MenuPopup';
 
 function Navigation() {
-    // const [isAuthenticated, setIsAuthenticated] = React.useState(false);
+    const [isLoggedIn] = React.useState(false);
     const location = useLocation();
     const isGreyBackground = location.pathname !== '/';
+    const [isMenuPopupOpen, setMenuPopupOpen] = useState(false);
+
+    const handleMenuButtonClick = () => {
+        setMenuPopupOpen(true);
+    };
+
+    const closeMenuPopup = () => {
+        setMenuPopupOpen(false);
+    };
 
     return (
         <div className='header__container'>
@@ -18,19 +27,22 @@ function Navigation() {
                 <Link to='/movies' className='header__link'>Фильмы</Link>
                 <Link to='/saved-movies' className='header__link'>Сохранённые фильмы</Link>
             </div>
-            {/* {isAuthenticated ? ( */}
+            {isLoggedIn ? (
+                <>
                 <div className='header__account'>
                     <Link to='/profile' className='header__link header__link_place_account'>Аккаунт
                     <div className={`header__account-icon ${isGreyBackground ? 'header__account-icon_background_grey' : ''}`}></div>
                     </Link>
                 </div>
-                <button type='button' className='header__menu-button'></button>
-            {/* ) : ( */}
-                {/* <div className='header__auth-container'>
+                <button type='button' className='header__menu-button'  onClick={handleMenuButtonClick}></button>
+                <MenuPopup isOpen={isMenuPopupOpen} onClose={closeMenuPopup} />
+                </>
+            ) : (
+                <div className='header__auth-container'>
                     <Link to='/signup' className='header__auth-link'>Регистрация</Link>
                     <Link to='/signin' className='header__auth-link header__auth-link_type_sign-in'>Войти</Link>
                 </div>
-            )} */}
+            )}
         </div>
     );
 }

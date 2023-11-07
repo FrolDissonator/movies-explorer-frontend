@@ -2,12 +2,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
     margin-top: 159px;
-    height: 100vh;
+    margin-bottom: 90px;
+    height: calc(100% - 249px);
 }
 
 @media screen and (max-width: 767px) {
     .menu-popup__container {
         margin-top: 144px;
+        margin-bottom: 46px;
+        height: calc(100% - 190px);
     }
 }
