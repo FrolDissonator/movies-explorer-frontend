@@ -22,16 +22,16 @@ function Navigation() {
         <div className='header__container'>
             <div className='header__links'>
                 <Link to='/' className='header__logo-link'>
-                    <img src={logo} alt='логотип проекта' className='header__logo' />
+                    <img src={logo} alt='логотип проекта' className='logo' />
                 </Link>
                 <Link to='/movies' className='header__link'>Фильмы</Link>
                 <Link to='/saved-movies' className='header__link'>Сохранённые фильмы</Link>
             </div>
             {isLoggedIn ? (
                 <>
-                <div className='header__account'>
+                <div className='account'>
                     <Link to='/profile' className='header__link header__link_place_account'>Аккаунт
-                    <div className={`header__account-icon ${isGreyBackground ? 'header__account-icon_background_grey' : ''}`}></div>
+                    <div className={`account__icon ${isGreyBackground ? 'account__icon_background_grey' : ''}`}></div>
                     </Link>
                 </div>
                 <button type='button' className='header__menu-button'  onClick={handleMenuButtonClick}></button>

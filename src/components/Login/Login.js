@@ -23,7 +23,7 @@ function Login({ onLogin }) {
     return(
         <div className='entrance'>
             <div className='entrance__logo-container'> 
-                <img src={logo} alt='логотип проекта' className='header__logo' />
+                <img src={logo} alt='логотип проекта' className='logo' />
             </div>
             <h2 className='entrance__title'>Рады видеть!</h2>
             <form className='entrance__form' onSubmit={handleSubmit}>

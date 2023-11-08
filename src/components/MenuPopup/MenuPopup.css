@@ -6,9 +6,9 @@
 @import url('../../blocks/menu-popup/__links/menu-popup__links.css');
 @import url('../../blocks/menu-popup/__link/menu-popup__link.css');
 @import url('../../blocks/menu-popup/__link/_active/menu-popup__link_active.css');
-@import url('../../blocks/header/__account/header__account.css');
-@import url('../../blocks/header/__account-icon/header__account-icon.css');
-@import url('../../blocks/header/__account-icon/_background/header__account-icon_background_grey.css');
-@import url('../../blocks/header/__link/header__link.css');
-@import url('../../blocks/header/__link/_place/header__link_place_account.css');
-@import url('../../blocks/header/__account/_place/header__account_place_popup.css');
+@import url('../../blocks/account/account.css');
+@import url('../../blocks/account/__icon/account__icon.css');
+@import url('../../blocks/account/__icon/_background/account__icon_background_grey.css');
+@import url('../../blocks/account/_place/account_place_popup.css');
+@import url('../../blocks/account/__link/account__link.css');
+@import url('../../blocks/account/__link/_place/account__link_place_popup.css');

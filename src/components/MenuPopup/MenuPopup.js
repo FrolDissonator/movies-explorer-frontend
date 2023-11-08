@@ -15,9 +15,9 @@ function MenuPopup({ isOpen, onClose }) {
                     <NavLink to='/movies' className={`menu-popup__link ${location.pathname === '/movies' ? 'menu-popup__link_active' : ''}`}>Фильмы</NavLink>
                     <NavLink to='/saved-movies' className={`menu-popup__link ${location.pathname === '/saved-movies' ? 'menu-popup__link_active' : ''}`}>Сохранённые фильмы</NavLink>
                 </div>
-                <div className='header__account header__account_place_popup'>
-                    <NavLink to='/profile' className={`header__link header__link_place_account ${location.pathname === '/profile' ? 'menu-popup__link_active' : ''}`}>Аккаунт
-                    <div className='header__account-icon header__account-icon_background_grey'></div>
+                <div className='account account_place_popup'>
+                    <NavLink to='/profile' className='account__link account__link_place_popup'>Аккаунт
+                    <div className='account__icon account__icon_background_grey'></div>
                     </NavLink>
                 </div>
             </div>
