@@ -1,0 +1,10 @@
+.search-form__container {
+    width: 100%;
+    margin-top: 60px;
+}
+
+@media screen and (max-width: 767px) {
+    .search-form__container {
+        margin-top: 80px;
+    }
+}

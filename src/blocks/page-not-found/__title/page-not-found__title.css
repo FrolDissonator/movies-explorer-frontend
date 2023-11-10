@@ -1,0 +1,15 @@
+.page-not-found__title {
+    font-size: 140px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 1);
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+@media screen and (max-width: 767px) {
+    .page-not-found__title {
+        font-size: 80px;
+        margin-bottom: 10px;
+    }
+}

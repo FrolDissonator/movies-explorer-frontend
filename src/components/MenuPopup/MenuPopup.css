@@ -1,0 +1,14 @@
+@import url('../../blocks/menu-popup/menu-popup.css');
+@import url('../../blocks/menu-popup/__content/menu-popup__content.css');
+@import url('../../blocks/menu-popup/_opened/menu-popup_opened.css');
+@import url('../../blocks/menu-popup/__container/menu-popup__container.css');
+@import url('../../blocks/menu-popup/__close-button/menu-popup__close-button.css');
+@import url('../../blocks/menu-popup/__links/menu-popup__links.css');
+@import url('../../blocks/menu-popup/__link/menu-popup__link.css');
+@import url('../../blocks/menu-popup/__link/_active/menu-popup__link_active.css');
+@import url('../../blocks/account/account.css');
+@import url('../../blocks/account/__icon/account__icon.css');
+@import url('../../blocks/account/__icon/_background/account__icon_background_grey.css');
+@import url('../../blocks/account/_place/account_place_popup.css');
+@import url('../../blocks/account/__link/account__link.css');
+@import url('../../blocks/account/__link/_place/account__link_place_popup.css');

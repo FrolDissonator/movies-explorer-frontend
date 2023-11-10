@@ -1,0 +1,11 @@
+.entrance__logo-container {
+    width: 100%;
+}
+
+@media screen and (max-width: 767px) {
+    .entrance__logo-container {
+        min-width: 38px;
+        display: flex;
+        justify-content: center;
+    }
+}

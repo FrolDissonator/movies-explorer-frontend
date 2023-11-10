@@ -1,0 +1,10 @@
+.account {
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (max-width: 769px) {
+    .account {
+        display: none;
+    }
+}

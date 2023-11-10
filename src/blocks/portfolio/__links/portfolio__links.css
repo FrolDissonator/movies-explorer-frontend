@@ -1,16 +1,17 @@
 .portfolio__links {
-
-    margin: 30px 70px 125px;
+    margin-top: 30px;
+    margin-bottom: 125px;
 }
 
 @media screen and (max-width: 1279px) {
     .portfolio__links {
-        margin: 30px 50px 90px;
+        margin-bottom: 90px;
     }
 }
 
 @media screen and (max-width: 767px) {
     .portfolio__links {
-        margin: 20px 14px 70px;
+        margin-top: 20px;
+        margin-bottom: 70px;
     }
 }

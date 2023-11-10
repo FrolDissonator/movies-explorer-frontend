@@ -1,0 +1,11 @@
+.search-form__checkbox-invisible {
+    position: absolute;
+	width: 1px; 
+	height: 1px;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+}
+
+.search-form__checkbox-invisible:checked + .search-form__checkbox-visible {
+	background-image: url('../../../images/checkbox-on.svg');
+}

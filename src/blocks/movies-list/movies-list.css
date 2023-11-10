@@ -1,0 +1,16 @@
+.movies-list {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 1279px) {
+    .movies-list {
+        margin-bottom: 30px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .movies-list {
+        margin-bottom: 26px;
+    }
+}

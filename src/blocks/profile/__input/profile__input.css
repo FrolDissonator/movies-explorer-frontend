@@ -1,0 +1,13 @@
+.profile__input {
+    background-color: rgba(32, 32, 32, 1);
+    border: none;
+    outline: none;
+    color: rgba(255, 255, 255, 1);
+    font-size: 11px;
+    line-height: 1.2;
+    font-size: 400;
+    text-align: right;
+    margin-bottom: 16px;
+    width: 100%;
+    padding-left: 70px;
+}

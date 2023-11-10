@@ -1,0 +1,5 @@
+.menu-popup_opened {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+}

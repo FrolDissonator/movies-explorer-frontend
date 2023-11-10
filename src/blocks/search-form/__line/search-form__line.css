@@ -1,0 +1,10 @@
+.search-form__line {
+    background-color: rgba(47, 47, 47, 1);
+    border-radius: 40px;
+    width: 100%;
+    min-height: 46px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 41px;
+    position: relative;
+}

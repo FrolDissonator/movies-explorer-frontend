@@ -1,2 +1,13 @@
-@import url('../../blocks/header/__logo/header__logo.css');
+@import url('../../blocks/logo/logo.css');
+@import url('../../blocks/header/__logo-link/header__logo-link.css');
 @import url('../../blocks/header/__container/header__container.css');
+@import url('../../blocks/header/__links/header__links.css');
+@import url('../../blocks/header/__link/header__link.css');
+@import url('../../blocks/account/account.css');
+@import url('../../blocks/account/__icon/account__icon.css');
+@import url('../../blocks/account/__icon/_background/account__icon_background_grey.css');
+@import url('../../blocks/account/__link/account__link.css');
+@import url('../../blocks/header/__auth-container/header__auth-container.css');
+@import url('../../blocks/header/__auth-link/header__auth-link.css');
+@import url('../../blocks/header/__auth-link/_type/header__auth-link_type_sign-in.css');
+@import url('../../blocks/header/__menu-button/header__menu-button.css');
