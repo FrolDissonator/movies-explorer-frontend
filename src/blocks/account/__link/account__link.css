@@ -18,9 +18,3 @@
 .account__link:last-of-type {
     margin-right: 0;
 }
-
-@media screen and (max-width: 1279px) {
-    .account__link {
-        display: none;
-    }
-}

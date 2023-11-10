@@ -30,7 +30,7 @@ function Navigation() {
             {isLoggedIn ? (
                 <>
                 <div className='account'>
-                    <Link to='/profile' className='header__link header__link_place_account'>Аккаунт
+                    <Link to='/profile' className='account__link'>Аккаунт
                     <div className={`account__icon ${isGreyBackground ? 'account__icon_background_grey' : ''}`}></div>
                     </Link>
                 </div>
