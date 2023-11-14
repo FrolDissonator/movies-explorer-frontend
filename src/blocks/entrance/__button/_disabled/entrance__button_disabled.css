@@ -1,0 +1,9 @@
+.entrance__button_disabled {
+    background-color: rgba(255, 255, 255, 1);
+    color: rgba(139, 139, 139, 1);
+    cursor: not-allowed;
+}
+
+.entrance__button_disabled:hover {
+    opacity: 1;
+}

@@ -1,17 +1,18 @@
 .card__image {
     width: 100%;
-    min-height: 203px;
+    max-height: 203px;
     object-fit: cover;
+    height: 100%;
 }
 
 @media screen and (max-width: 1279px) {
     .card__image {
-        min-height: 190px;
+        max-height: 190px;
     }
 }
 
 @media screen and (max-width: 767px) {
     .card__image {
-        min-height: 168px;
+        max-height: 168px;
     }
 }

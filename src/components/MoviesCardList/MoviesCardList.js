@@ -10,7 +10,7 @@ function MoviesCardList({ movies }) {
         updatedLikes[index] = !updatedLikes[index];
         setLikeActive(updatedLikes);
     };
-
+    console.log(movies);
     return (
         <section className='movies-list'>
             <div className='movies-list__grid'>

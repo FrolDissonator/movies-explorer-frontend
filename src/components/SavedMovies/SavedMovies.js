@@ -2,7 +2,8 @@ import React from 'react';
 import './SavedMovies.css';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import Preloader from '../Preloader/Preloader';
+// import Preloader from '../Preloader/Preloader';
+import Loader from '../Loader/Loader';
 import wordsAboutDesign from '../../images/card-33-words.jpg';
 import oneHundredYears from '../../images/card-100-years.jpg';
 import banksy from '../../images/card-banksy.jpg';
@@ -34,8 +35,9 @@ function SavedMovies() {
     return(
         <div className='movies'>
             <SearchForm />
+            {/* <Preloader /> */}
             <MoviesCardList movies={movies} />
-            <Preloader showButton={shouldShowButton} />
+            <Loader showButton={shouldShowButton} />
         </div>
     );
 }
