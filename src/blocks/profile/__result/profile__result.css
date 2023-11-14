@@ -1,0 +1,10 @@
+.profile__result {
+    margin: 0;
+    text-align: center;
+    color: rgba(43, 224, 128, 1);
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 400;
+    min-height: 20px;
+    margin-top: 180px;
+}

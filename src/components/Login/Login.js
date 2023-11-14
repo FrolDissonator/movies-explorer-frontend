@@ -30,7 +30,7 @@ function Login({ onSubmit }) {
           setErrors((prev) => ({ ...prev, email: '' }));
         } else {
           setIsValid((prev) => ({ ...prev, email: false }));
-          setErrors((prev) => ({ ...prev, email: 'Введите корректный email' }));
+          setErrors((prev) => ({ ...prev, email: 'Введите корректный e-mail' }));
         }
       }
     };

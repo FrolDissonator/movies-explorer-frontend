@@ -11,6 +11,7 @@ function Movies({ isLoading, movies }) {
   const [error, setError] = useState('');
   const [searchFilms, setSearchFilms] = useState([]);
   const [shortFilmsButton, setShortFilmsButton] = useState(false);
+  const [showButton, setShowButton] = useState('');
 
   function getInitialVisibleCards() {
     const screenWidth = window.innerWidth;
@@ -68,6 +69,14 @@ function Movies({ isLoading, movies }) {
   }
 
   useEffect(() => {
+    if (searchFilms.length > 12) {
+      setShowButton(true);
+    } else {
+      setShowButton(false);
+    }
+  }, [searchFilms]);
+
+  useEffect(() => {
     setSearchQuery(localStorage.getItem('searchQuery'));
     setSearchFilms(JSON.parse(localStorage.getItem('searchFilms')) || []);
     setShortFilmsButton(localStorage.getItem('checkBox') === 'true' ? true : false);
@@ -95,7 +104,7 @@ function Movies({ isLoading, movies }) {
       setShortFilmsButton={setShortFilmsButton} />
       {isLoading && <Preloader />}
       {!isLoading && <MoviesCardList movies={searchFilms.slice(0, visibleCards)} />}
-      {movies.length > visibleCards && <Loader showButton={true} onClick={handleShowMore} />}
+      {searchFilms.length > visibleCards && showButton && <Loader showButton={true} onClick={handleShowMore} />}
     </div>
   );
 }

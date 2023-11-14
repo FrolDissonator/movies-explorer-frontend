@@ -6,12 +6,14 @@ import './Profile.css';
 function Profile(props) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [editedName, setEditedName] = useState('');
 
   useEffect(() => {
     mainApi.getUserInfo()
       .then((userInfo) => {
         setName(userInfo.name);
         setEmail(userInfo.email);
+        setEditedName(userInfo.name);
       })
       .catch((err) => {
         console.error(err);
@@ -20,15 +22,16 @@ function Profile(props) {
 
   const handleInputChange = (e) => {
     if (e.target.name === 'name') {
-      setName(e.target.value);
+      setEditedName(e.target.value);
     } else if (e.target.name === 'email') {
       setEmail(e.target.value);
     }
   };
 
   const handleEditProfile = () => {
-    mainApi.setUserInfo(name, email)
+    mainApi.setUserInfo(editedName, email)
       .then((updatedUserInfo) => {
+        setName(updatedUserInfo.name);
         console.log('Данные пользователя успешно обновлены:', updatedUserInfo);
       })
       .catch((err) => {
@@ -46,9 +49,10 @@ function Profile(props) {
             className='profile__input'
             type='text'
             name='name'
-            value={name}
+            value={editedName}
             onChange={handleInputChange}
           />
+          <span className='profile__error'></span>
         </div>
         <div className='profile__input-container'>
           <label className='profile__label'>E-mail</label>
@@ -59,7 +63,9 @@ function Profile(props) {
             value={email}
             onChange={handleInputChange}
           />
+          <span className='profile__error'></span>
         </div>
+        <span className='profile__result profile__result_error'></span>
         <button type='button' className='profile__button' onClick={handleEditProfile}>
           Редактировать
         </button>

@@ -7,7 +7,9 @@ function MoviesCard({ movie, onLikeClick, isLiked }) {
     const location = useLocation();
     return (
         <div className='card'>
+            <a href={movie.trailerLink} target='_blank' rel='noreferrer' className='card__link'>
             <img alt={movie.nameRU} src={'https://api.nomoreparties.co/' + movie.image.url} className='card__image'/>
+            </a>
             <div className='card__info'>
                 <div className='card__description'>
                     <h2 className='card__title'>{movie.nameRU}</h2>

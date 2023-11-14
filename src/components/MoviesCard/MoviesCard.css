@@ -1,4 +1,5 @@
 @import url('../../blocks/card/card.css');
+@import url('../../blocks/card/__link/card__link.css');
 @import url('../../blocks/card/__image/card__image.css');
 @import url('../../blocks/card/__info/card__info.css');
 @import url('../../blocks/card/__description/card__description.css');
