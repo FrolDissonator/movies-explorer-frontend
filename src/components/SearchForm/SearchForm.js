@@ -5,8 +5,6 @@ function SearchForm({searchQuery, setSearchQuery, error, searchResult, shortFilm
     const [query, setQuery] = useState('');
     const handleSearch = (e) => {
         e.preventDefault();
-        console.log(searchQuery);
-        console.log(query);
         localStorage.setItem('searchQuery', query);
         setSearchQuery(query);
         searchResult(query);

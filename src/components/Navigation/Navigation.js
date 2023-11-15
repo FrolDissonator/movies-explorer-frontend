@@ -18,7 +18,6 @@ function Navigation() {
   const closeMenuPopup = () => {
     setMenuPopupOpen(false);
   };
-  console.log(currentUser);
   return (
     <div className='header__container'>
       <div className='header__links'>

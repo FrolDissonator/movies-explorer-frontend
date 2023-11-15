@@ -22,11 +22,13 @@ function App() {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [movies, setMovies] = useState([]);
+  const [saveMovies, setSaveMovies] = useState([]);
 
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
     checkToken(jwt);
     getFilms();
+    getSavedMovies();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -72,7 +74,7 @@ function App() {
   };
 
   const handleSignOut = () => {
-    localStorage.removeItem("jwt");
+    localStorage.clear();
     setLoggedIn(false);
     navigate("/signin");
   };
@@ -85,6 +87,52 @@ function App() {
     })
     .catch((err) => {
       console.error(err);
+    })
+    .finally(() => {
+      setIsLoading(false);
+    })
+  }
+
+  const saveMovie = (movie) => {
+    mainApi.saveMovie(movie)
+    .then((res) => {
+      console.log(res)
+      setSaveMovies((prev) => {
+        return [ ...prev, res ]
+      })
+    })
+    .catch((err) => {
+      console.error(err)
+    })
+  }
+
+  const deleteMovie = (id) => {
+    const idForDelete = saveMovies.find((movie) => {
+      return movie.movieId === id
+    })._id
+    mainApi.deleteMovie(idForDelete)
+    .then((res) => {
+      console.log(res)
+      setSaveMovies((prev) => {
+        return prev.filter((movie) => {
+          return movie._id !== idForDelete
+        })
+      })
+    })
+    .catch((err) => {
+      console.error(err)
+    })
+  }
+
+  const getSavedMovies = () => {
+    setIsLoading(true);
+    mainApi.getSaveMovies()
+    .then((res) => {
+      console.log(res)
+      setSaveMovies(res)
+    })
+    .catch((err) => {
+      console.error(err)
     })
     .finally(() => {
       setIsLoading(false);
@@ -113,7 +161,7 @@ function App() {
                 <ProtectedRouteElement loggedIn={loggedIn}>
                   <>
                     <Header />
-                    <Movies isLoading={isLoading} movies={movies} />
+                    <Movies isLoading={isLoading} movies={movies} saveMovie={saveMovie} deleteMovie={deleteMovie} saveMovies={saveMovies} />
                     <Footer />
                     <MenuPopup />
                   </>
@@ -126,7 +174,7 @@ function App() {
                 <ProtectedRouteElement loggedIn={loggedIn}>
                     <>
                       <Header />
-                      <SavedMovies />
+                      <SavedMovies isLoading={isLoading} saveMovie={saveMovie} deleteMovie={deleteMovie} saveMovies={saveMovies} />
                       <Footer />
                       <MenuPopup />
                     </>

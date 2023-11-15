@@ -5,17 +5,13 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader';
 import Loader from '../Loader/Loader';
 
-function SavedMovies() {
-    const [movies] = React.useState([]);
-
-    const shouldShowButton = movies.length > 9;
-
+function SavedMovies({isLoading, saveMovies, deleteMovie}) {
     return(
         <div className='movies'>
             <SearchForm />
-            <Preloader />
-            <MoviesCardList movies={movies} />
-            <Loader showButton={shouldShowButton} />
+            {isLoading && <Preloader />}
+            {!isLoading && <MoviesCardList movies={saveMovies} deleteMovie={deleteMovie} saveMovies={saveMovies} />}
+            <Loader />
         </div>
     );
 }

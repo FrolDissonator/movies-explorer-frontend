@@ -5,7 +5,7 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader';
 import Loader from '../Loader/Loader';
 
-function Movies({ isLoading, movies }) {
+function Movies({ isLoading, movies, saveMovie, deleteMovie, saveMovies }) {
   const [visibleCards, setVisibleCards] = useState(getInitialVisibleCards());
   const [searchQuery, setSearchQuery] = useState('');
   const [error, setError] = useState('');
@@ -37,8 +37,6 @@ function Movies({ isLoading, movies }) {
       }
       setSearchFilms(result);
       localStorage.setItem('searchFilms', JSON.stringify(result));
-      console.log(result);
-      console.log(query);
   }
 
   useEffect(() => {
@@ -88,8 +86,7 @@ function Movies({ isLoading, movies }) {
           return prev.filter((film) => film.duration < 40)
         })
     } else {
-        searchResult(searchQuery)
-        console.log(searchQuery);
+        setSearchFilms(JSON.parse(localStorage.getItem('searchFilms')) || []);
     }
   }, [shortFilmsButton])
 
@@ -103,7 +100,7 @@ function Movies({ isLoading, movies }) {
       shortFilmsButton={shortFilmsButton}
       setShortFilmsButton={setShortFilmsButton} />
       {isLoading && <Preloader />}
-      {!isLoading && <MoviesCardList movies={searchFilms.slice(0, visibleCards)} />}
+      {!isLoading && <MoviesCardList movies={searchFilms.slice(0, visibleCards)} saveMovie={saveMovie} deleteMovie={deleteMovie} saveMovies={saveMovies} />}
       {searchFilms.length > visibleCards && showButton && <Loader showButton={true} onClick={handleShowMore} />}
     </div>
   );
