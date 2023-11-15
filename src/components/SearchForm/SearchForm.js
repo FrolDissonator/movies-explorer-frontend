@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./SearchForm.css";
+import { useLocation } from "react-router-dom";
 
 function SearchForm({
   searchQuery,
@@ -10,22 +11,24 @@ function SearchForm({
   setShortFilmsButton,
 }) {
   const [query, setQuery] = useState("");
+  const location = useLocation();
 
   const handleSearch = (e) => {
     e.preventDefault();
-    localStorage.setItem("searchQuery", query);
+    location.pathname === '/movies' && localStorage.setItem("searchQuery", query);
     setSearchQuery(query);
+    console.log(query);
     searchResult(query);
   };
 
   useEffect(() => {
-    setQuery(localStorage.getItem("searchQuery"));
+    location.pathname === '/movies' && setQuery(localStorage.getItem("searchQuery"));
   }, []);
 
   return (
     <section className="search-form">
       <div className="search-form__container">
-        <form className="search-form__form" onSubmit={handleSearch}>
+        <form className="search-form__form" onSubmit={handleSearch} noValidate>
           <div className="search-form__line">
             <input
               className="search-form__input"
@@ -42,7 +45,7 @@ function SearchForm({
             <input
               type="checkbox"
               className="search-form__checkbox-invisible"
-              defaultChecked={shortFilmsButton}
+              checked={shortFilmsButton}
             />
             <span
               className="search-form__checkbox-visible"

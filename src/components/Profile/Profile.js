@@ -65,7 +65,7 @@ function Profile(props) {
           console.error('Ошибка при обновлении данных пользователя:', err);
           setSubmitStatus({
             message:
-              err.code === 409
+              err.includes('409')
                 ? 'Пользователь с таким email уже существует.'
                 : 'При обновлении профиля произошла ошибка.',
             success: false,

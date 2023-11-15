@@ -50,7 +50,7 @@ function App() {
     }
   };
 
-  const handleRegister = (data) => {
+  const handleRegister = (data, handleResultError) => {
     mainApi
       .register(data.name, data.email, data.password)
       .then((res) => {
@@ -58,10 +58,11 @@ function App() {
       })
       .catch((err) => {
         console.error(err);
+        handleResultError(err);
       });
   };
 
-  const handleLogin = (data) => {
+  const handleLogin = (data, handleResultError) => {
     mainApi
       .login(data.email, data.password)
       .then((res) => {
@@ -70,6 +71,7 @@ function App() {
       })
       .catch((err) => {
         console.error(err);
+        handleResultError(err);
       });
   };
 

@@ -20,6 +20,7 @@ function Login({ onSubmit }) {
     password: '',
   });
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+  const [resultError, setResultError] = useState('');
 
   useEffect(() => {
     const validateEmail = () => {
@@ -68,8 +69,17 @@ function Login({ onSubmit }) {
     
     e.preventDefault();
     setIsFormSubmitted(true);
-    onSubmit(data);
+    onSubmit(data, handleResultError);
   };
+
+  const handleResultError = (err) => {
+    setResultError(err);
+    if (err.includes('401')) {
+      setResultError('Вы ввели неправильный логин или пароль.');
+    } else {
+      setResultError('При авторизации пользователя произошла ошибка.')
+    }
+  }
 
   return (
     <div className='entrance'>
@@ -103,7 +113,7 @@ function Login({ onSubmit }) {
         />
         <span className='entrance__error'>{touched.password && errors.password}</span>
         <div className='entrance__button-container'>
-          <span className='entrance__error entrance__error_place_button'></span>
+          <span className='entrance__error entrance__error_place_button'>{resultError}</span>
           <button 
             type='submit' 
             className={`entrance__button ${!(isValid.email && isValid.password) ? 'entrance__button_disabled' : ''}`} 

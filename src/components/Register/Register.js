@@ -29,6 +29,8 @@ function Register({ onSubmit }) {
     password: '',
   });
 
+  const [resultError, setResultError] = useState('');
+
   useEffect(() => {
     const { name, email, password } = data;
 
@@ -81,8 +83,17 @@ function Register({ onSubmit }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(data);
+    onSubmit(data, handleResultError);
   };
+
+  const handleResultError = (err) => {
+    setResultError(err);
+    if (err.includes('409')) {
+      setResultError('Пользователь с таким email уже существует.');
+    } else {
+      setResultError('При регистрации пользователя произошла ошибка.')
+    }
+  }
 
   return (
     <div className='entrance'>
@@ -122,7 +133,7 @@ function Register({ onSubmit }) {
         />
         <span className='entrance__error'>{touched.password && errors.password}</span>
         <div className='entrance__button-container'>
-          <span className='entrance__error entrance__error_place_button'></span>
+          <span className='entrance__error entrance__error_place_button'>{resultError}</span>
           <button 
             type='submit' 
             className={`entrance__button ${!(isValid.name && isValid.email && isValid.password) ? 'entrance__button_disabled' : ''}`} 
