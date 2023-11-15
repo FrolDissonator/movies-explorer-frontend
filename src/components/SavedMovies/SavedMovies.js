@@ -47,6 +47,7 @@ function SavedMovies({ isLoading, saveMovies, deleteMovie }) {
       }
       searchQuery && searchResult(searchQuery);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shortFilmsButton]);
 
   return (
