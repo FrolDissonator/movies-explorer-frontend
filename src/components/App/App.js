@@ -44,7 +44,7 @@ function App() {
           }
         })
         .catch((err) => {
-          console.log(err);
+          console.error(err);
           setLoggedIn(false);
         });
     }
@@ -98,7 +98,6 @@ function App() {
   const saveMovie = (movie) => {
     mainApi.saveMovie(movie)
     .then((res) => {
-      console.log(res)
       setSaveMovies((prev) => {
         return [ ...prev, res ]
       })
@@ -114,7 +113,6 @@ function App() {
     })._id
     mainApi.deleteMovie(idForDelete)
     .then((res) => {
-      console.log(res)
       setSaveMovies((prev) => {
         return prev.filter((movie) => {
           return movie._id !== idForDelete
@@ -130,7 +128,6 @@ function App() {
     setIsLoading(true);
     mainApi.getSaveMovies()
     .then((res) => {
-      console.log(res)
       setSaveMovies(res)
     })
     .catch((err) => {

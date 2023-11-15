@@ -10,11 +10,9 @@ function MoviesCard({ movie, onLikeClick, isLiked, saveMovie, deleteMovie }) {
         if (localIsLiked) {
             deleteMovie(movie.id || movie.movieId)
             setLocalIsLiked((prev) => !prev);
-            console.log(movie)
         } else {
             saveMovie(movie)
             setLocalIsLiked((prev) => !prev);
-            console.log(movie)
         }
     }
 

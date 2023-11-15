@@ -3,7 +3,6 @@ import React from 'react';
 import MoviesCard from '../MoviesCard/MoviesCard';
 
 function MoviesCardList({ movies, saveMovie, deleteMovie, saveMovies }) {
-    console.log(movies);
     const [likeActive, setLikeActive] = React.useState(new Array(movies.length).fill(false));
 
     const handleLikeClick = (index) => {

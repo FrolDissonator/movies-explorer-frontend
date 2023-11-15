@@ -23,7 +23,6 @@ function SavedMovies({ isLoading, saveMovies, deleteMovie }) {
       setError("");
     }
     setSearchFilms(result);
-    console.log(result);
   }
 
   useEffect(() => {

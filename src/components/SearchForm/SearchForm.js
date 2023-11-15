@@ -17,7 +17,6 @@ function SearchForm({
     e.preventDefault();
     location.pathname === '/movies' && localStorage.setItem("searchQuery", query);
     setSearchQuery(query);
-    console.log(query);
     searchResult(query);
   };
 
