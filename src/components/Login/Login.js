@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Login.css';
 import logo from '../../images/logo.svg';
-
-const regEmail = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/i;
+import { regEmail } from '../../utils/helpers';
 
 function Login({ onSubmit }) {
   const [email, setEmail] = useState('');
@@ -30,7 +29,7 @@ function Login({ onSubmit }) {
           setErrors((prev) => ({ ...prev, email: '' }));
         } else {
           setIsValid((prev) => ({ ...prev, email: false }));
-          setErrors((prev) => ({ ...prev, email: 'Введите корректный e-mail' }));
+          setErrors((prev) => ({ ...prev, email: 'Введите корректный email' }));
         }
       }
     };
