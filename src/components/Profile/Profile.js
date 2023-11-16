@@ -28,7 +28,6 @@ function Profile({ onSignOut, isLoading, setIsLoading }) {
     message: "",
     success: null,
   });
-  console.log(isLoading);
 
   useEffect(() => {
     mainApi

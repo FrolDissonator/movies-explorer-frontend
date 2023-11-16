@@ -159,12 +159,6 @@ function App() {
       .deleteMovie(idForDelete)
       .then((res) => {
         setSaveMovies((prev) => {
-          console.log(saveMovies);
-          console.log(
-            prev.filter((movie) => {
-              return movie._id !== idForDelete;
-            })
-          );
           return prev.filter((movie) => {
             return movie._id !== idForDelete;
           });
