@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import "./SearchForm.css";
 import { useLocation } from "react-router-dom";
+import { PAGE_MOVIES, MSG_NEED_REQUEST } from "../../utils/constants";
 
 function SearchForm({
   searchQuery,
   setSearchQuery,
   error,
+  setError,
   searchResult,
   shortFilmsButton,
   setShortFilmsButton,
@@ -15,13 +17,29 @@ function SearchForm({
 
   const handleSearch = (e) => {
     e.preventDefault();
-    location.pathname === '/movies' && localStorage.setItem("searchQuery", query);
+    if (!query.trim()) {
+      setError(MSG_NEED_REQUEST);
+      return;
+    }
+    setError("");
+    location.pathname === PAGE_MOVIES && localStorage.setItem("searchQuery", query);
     setSearchQuery(query);
     searchResult(query);
   };
 
+  const handleCheckboxClick = () => {
+    setError("");
+    setShortFilmsButton((prev) => !prev);
+    localStorage.setItem("checkBox", !shortFilmsButton);
+    if (query.trim()) {
+      searchResult(query);
+    }
+  };
+
   useEffect(() => {
-    location.pathname === '/movies' && setQuery(localStorage.getItem("searchQuery"));
+    location.pathname === PAGE_MOVIES &&
+      setQuery(localStorage.getItem("searchQuery"));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -35,7 +53,11 @@ function SearchForm({
               placeholder="Фильм"
               required
               value={query}
-              onChange={(e) => setQuery(e.target.value)}
+              onChange={(e) => {
+                setQuery(e.target.value);
+                setSearchQuery(e.target.value);
+                setError("");
+              }}
             />
             <button className="search-form__button" type="submit"></button>
           </div>
@@ -45,13 +67,10 @@ function SearchForm({
               type="checkbox"
               className="search-form__checkbox-invisible"
               checked={shortFilmsButton}
+              onClick={handleCheckboxClick}
             />
             <span
               className="search-form__checkbox-visible"
-              onClick={() => {
-                setShortFilmsButton((prev) => !prev);
-                localStorage.setItem("checkBox", !shortFilmsButton);
-              }}
             ></span>
             <span className="search-form__text">Короткометражки</span>
           </label>

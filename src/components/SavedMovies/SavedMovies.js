@@ -4,6 +4,7 @@ import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Preloader from "../Preloader/Preloader";
 import Loader from "../Loader/Loader";
+import { MSG_NOT_FOUND } from "../../utils/constants";
 
 function SavedMovies({ isLoading, saveMovies, deleteMovie }) {
   const [error, setError] = useState("");
@@ -18,7 +19,7 @@ function SavedMovies({ isLoading, saveMovies, deleteMovie }) {
         movie.nameEN.toLowerCase().includes(query.toLowerCase())
     );
     if (result.length === 0) {
-      setError("Ничего не найдено");
+      setError(MSG_NOT_FOUND);
     } else {
       setError("");
     }
@@ -30,25 +31,25 @@ function SavedMovies({ isLoading, saveMovies, deleteMovie }) {
       setSearchFilms((prev) => {
         const shortFilms = prev.filter((film) => film.duration < 40);
         if (shortFilms.length === 0) {
-            setError("Ничего не найдено");
-          } else {
-            setError("");
-          }
+          setError(MSG_NOT_FOUND);
+        } else {
+          setError("");
+        }
         return shortFilms;
       });
     } else {
       if (!searchQuery) {
-        setSearchFilms(saveMovies)
+        setSearchFilms(saveMovies);
         if (saveMovies.length === 0) {
-            setError("Ничего не найдено");
-          } else {
-            setError("");
-          }
+          setError(MSG_NOT_FOUND);
+        } else {
+          setError("");
+        }
       }
       searchQuery && searchResult(searchQuery);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [shortFilmsButton]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [shortFilmsButton, saveMovies]);
 
   return (
     <div className="movies">
@@ -56,6 +57,7 @@ function SavedMovies({ isLoading, saveMovies, deleteMovie }) {
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
         error={error}
+        setError={setError}
         searchResult={searchResult}
         shortFilmsButton={shortFilmsButton}
         setShortFilmsButton={setShortFilmsButton}
