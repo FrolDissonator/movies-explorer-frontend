@@ -28,7 +28,7 @@ import {
   PAGE_SAVED_MOVIES,
   PAGE_PROFILE,
   PAGE_MAIN,
-  PAGE_NOT_FOUND
+  PAGE_NOT_FOUND,
 } from "../../utils/constants";
 
 function App() {
@@ -118,8 +118,9 @@ function App() {
 
   const handleSignOut = () => {
     localStorage.clear();
+    setCurrentUser({});
     setLoggedIn(false);
-    navigate(PAGE_LOGIN);
+    navigate(PAGE_MAIN);
   };
 
   const getFilms = () => {
@@ -193,7 +194,7 @@ function App() {
             path={PAGE_MAIN}
             element={
               <>
-                <Header />
+                <Header loggedIn={loggedIn} />
                 <Main />
                 <Footer />
                 <MenuPopup />
@@ -206,7 +207,7 @@ function App() {
               element={
                 <ProtectedRouteElement loggedIn={loggedIn}>
                   <>
-                    <Header />
+                    <Header loggedIn={loggedIn} />
                     <Movies
                       isLoading={isLoading}
                       movies={movies}
@@ -225,7 +226,7 @@ function App() {
               element={
                 <ProtectedRouteElement loggedIn={loggedIn}>
                   <>
-                    <Header />
+                    <Header loggedIn={loggedIn} />
                     <SavedMovies
                       isLoading={isLoading}
                       saveMovie={saveMovie}
@@ -243,7 +244,7 @@ function App() {
               element={
                 <ProtectedRouteElement loggedIn={loggedIn}>
                   <>
-                    <Header />
+                    <Header loggedIn={loggedIn} />
                     <Profile
                       onSignOut={handleSignOut}
                       isLoading={isLoading}
@@ -256,28 +257,32 @@ function App() {
             />
             <Route path={PAGE_NOT_FOUND} element={<PageNotFound />} />
           </Route>
-          <Route
-            path={PAGE_REGISTER}
-            element={
-              <Register
-                onSubmit={handleRegister}
-                handleResultError={handleResultError}
-                isLoading={isLoading}
-                resultError={resultError}
+          {!loggedIn ? (
+            <>
+              <Route
+                path={PAGE_REGISTER}
+                element={
+                  <Register
+                    onSubmit={handleRegister}
+                    handleResultError={handleResultError}
+                    isLoading={isLoading}
+                    resultError={resultError}
+                  />
+                }
               />
-            }
-          />
-          <Route
-            path={PAGE_LOGIN}
-            element={
-              <Login
-                onSubmit={handleLogin}
-                handleResultError={handleResultError}
-                isLoading={isLoading}
-                resultError={resultError}
+              <Route
+                path={PAGE_LOGIN}
+                element={
+                  <Login
+                    onSubmit={handleLogin}
+                    handleResultError={handleResultError}
+                    isLoading={isLoading}
+                    resultError={resultError}
+                  />
+                }
               />
-            }
-          />
+            </>
+          ) : null}
         </Routes>
       </div>
     </CurrentUserContext.Provider>

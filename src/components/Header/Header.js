@@ -4,7 +4,7 @@ import Navigation from "../Navigation/Navigation";
 import { useLocation } from "react-router-dom";
 import { PAGE_MAIN } from "../../utils/constants";
 
-function Header() {
+function Header({ loggedIn }) {
   const location = useLocation();
   const isBlackBackground = location.pathname !== PAGE_MAIN;
 
@@ -12,7 +12,7 @@ function Header() {
     <header
       className={`header ${isBlackBackground ? "header_background_black" : ""}`}
     >
-      <Navigation />
+      <Navigation loggedIn={loggedIn} />
     </header>
   );
 }

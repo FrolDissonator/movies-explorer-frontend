@@ -17,29 +17,35 @@ function SearchForm({
 
   const handleSearch = (e) => {
     e.preventDefault();
-    if (!query.trim()) {
+    if (!query || !query.trim()) {
       setError(MSG_NEED_REQUEST);
       return;
     }
     setError("");
-    location.pathname === PAGE_MOVIES && localStorage.setItem("searchQuery", query);
+    location.pathname === PAGE_MOVIES &&
+      localStorage.setItem("searchQuery", query);
     setSearchQuery(query);
-    searchResult(query);
+    location.pathname === PAGE_MOVIES
+    ? searchResult(query, shortFilmsButton)
+    : searchResult(query);
   };
 
   const handleCheckboxClick = () => {
     setError("");
     setShortFilmsButton((prev) => !prev);
-    localStorage.setItem("checkBox", !shortFilmsButton);
-    if (query.trim()) {
-      searchResult(query);
+    const updatedShortFilmsButton = !shortFilmsButton;
+    localStorage.setItem("checkBox", JSON.stringify(updatedShortFilmsButton));
+    if (query && query.trim()) {
+      location.pathname === PAGE_MOVIES
+        ? searchResult(query, !shortFilmsButton)
+        : searchResult(query);
     }
   };
 
   useEffect(() => {
     location.pathname === PAGE_MOVIES &&
       setQuery(localStorage.getItem("searchQuery"));
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -69,9 +75,7 @@ function SearchForm({
               checked={shortFilmsButton}
               onClick={handleCheckboxClick}
             />
-            <span
-              className="search-form__checkbox-visible"
-            ></span>
+            <span className="search-form__checkbox-visible"></span>
             <span className="search-form__text">Короткометражки</span>
           </label>
         </form>

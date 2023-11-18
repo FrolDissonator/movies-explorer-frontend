@@ -4,7 +4,7 @@ import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Preloader from "../Preloader/Preloader";
 import Loader from "../Loader/Loader";
-import { MSG_NOT_FOUND } from "../../utils/constants";
+import { MSG_NOT_FOUND, SHORT_MOVIE } from "../../utils/constants";
 
 function SavedMovies({ isLoading, saveMovies, deleteMovie }) {
   const [error, setError] = useState("");
@@ -13,30 +13,48 @@ function SavedMovies({ isLoading, saveMovies, deleteMovie }) {
   const [searchFilms, setSearchFilms] = useState(saveMovies);
 
   function searchResult(query) {
-    const result = saveMovies.filter(
-      (movie) =>
-        movie.nameRU.toLowerCase().includes(query.toLowerCase()) ||
-        movie.nameEN.toLowerCase().includes(query.toLowerCase())
-    );
-    if (result.length === 0) {
-      setError(MSG_NOT_FOUND);
+    if (!shortFilmsButton) {
+      const result = saveMovies.filter(
+        (movie) =>
+          movie.nameRU.toLowerCase().includes(query.toLowerCase()) ||
+          movie.nameEN.toLowerCase().includes(query.toLowerCase())
+      );
+      if (result.length === 0) {
+        setError(MSG_NOT_FOUND);
+      } else {
+        setError("");
+      }
+      setSearchFilms(result);
     } else {
-      setError("");
+      const result = saveMovies.filter(
+        (movie) =>
+          movie.nameRU.toLowerCase().includes(query.toLowerCase()) ||
+          movie.nameEN.toLowerCase().includes(query.toLowerCase())
+      ).filter((film) => film.duration < SHORT_MOVIE);
+      if (result.length === 0) {
+        setError(MSG_NOT_FOUND);
+      } else {
+        setError("");
+      }
+      setSearchFilms(result);
     }
-    setSearchFilms(result);
   }
 
   useEffect(() => {
     if (shortFilmsButton) {
-      setSearchFilms((prev) => {
-        const shortFilms = prev.filter((film) => film.duration < 40);
-        if (shortFilms.length === 0) {
-          setError(MSG_NOT_FOUND);
-        } else {
-          setError("");
-        }
-        return shortFilms;
-      });
+      if (searchQuery) {
+        searchResult(searchQuery);
+      } else {
+        setSearchFilms((prev) => {
+          const shortFilms = saveMovies.filter((film) => film.duration < SHORT_MOVIE);
+          if (shortFilms.length === 0) {
+            setError(MSG_NOT_FOUND);
+          } else {
+            setError("");
+          }
+          return shortFilms;
+        });
+      }
     } else {
       if (!searchQuery) {
         setSearchFilms(saveMovies);

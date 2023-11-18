@@ -6,18 +6,30 @@ import { PAGE_MOVIES } from "../../utils/constants";
 
 function MoviesCard({ movie, isLiked, saveMovie, deleteMovie }) {
   const [localIsLiked, setLocalIsLiked] = useState(isLiked);
+  const [isLoading, setIsLoading] = useState(false);
   const location = useLocation();
-  const handleLike = () => {
-    if (localIsLiked) {
-      deleteMovie(movie.id || movie.movieId, handleServerLike);
-    } else {
-      saveMovie(movie, handleServerLike);
-    }
-  };
 
   const handleServerLike = () => {
     setLocalIsLiked((prev) => !prev);
-  }
+  };
+
+  const handleLike = () => {
+    setIsLoading(true);
+
+    const callback = (success) => {
+      setIsLoading(false);
+
+      if (success) {
+        handleServerLike();
+      }
+    };
+
+    if (localIsLiked) {
+      deleteMovie(movie.id || movie.movieId, () => callback(true));
+    } else {
+      saveMovie(movie, () => callback(true));
+    }
+  };
 
   return (
     <div className="card">
@@ -47,12 +59,14 @@ function MoviesCard({ movie, isLiked, saveMovie, deleteMovie }) {
               }`}
               type="button"
               onClick={handleLike}
+              disabled={isLoading}
             ></button>
           ) : (
             <button
               type="button"
               className="card__delete-button"
-              onClick={() => deleteMovie(movie.id || movie.movieId)}
+              onClick={handleLike}
+              disabled={isLoading}
             ></button>
           )}
         </div>

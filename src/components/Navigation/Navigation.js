@@ -13,7 +13,7 @@ import {
   PAGE_MAIN,
 } from "../../utils/constants";
 
-function Navigation() {
+function Navigation({loggedIn}) {
   const currentUser = useContext(CurrentUserContext);
   const location = useLocation();
   const isGreyBackground = location.pathname !== "/";
@@ -32,7 +32,7 @@ function Navigation() {
         <Link to={PAGE_MAIN} className="header__logo-link">
           <img src={logo} alt="логотип проекта" className="logo" />
         </Link>
-        {currentUser && (
+        {currentUser && loggedIn && (
           <>
             <Link to={PAGE_MOVIES} className="header__link">
               Фильмы
@@ -43,7 +43,7 @@ function Navigation() {
           </>
         )}
       </div>
-      {currentUser ? (
+      {currentUser && loggedIn ? (
         <>
           <div className="account">
             <Link to={PAGE_PROFILE} className="account__link">

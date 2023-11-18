@@ -4,7 +4,20 @@ import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Preloader from "../Preloader/Preloader";
 import Loader from "../Loader/Loader";
-import { MSG_NOT_FOUND, MSG_NEED_REQUEST } from "../../utils/constants";
+import {
+  MSG_NOT_FOUND,
+  MSG_NEED_REQUEST,
+  FULL_SCREEN,
+  LESS_FULL_SCREEN,
+  TABLE_SCREEN,
+  LESS_TABLE_SCREEN,
+  MAX_MOVIES_FULL_SCREEN,
+  MAX_MOVIES_TABLE_SCREEN,
+  MAX_MOVIES_PHONE_SCREEN,
+  ADD_MOVIES_FULL_SCREEN,
+  ADD_MOVIES_TABLE_SCREEN,
+  SHORT_MOVIE,
+} from "../../utils/constants";
 
 function Movies({ isLoading, movies, saveMovie, deleteMovie, saveMovies }) {
   const [visibleCards, setVisibleCards] = useState(getInitialVisibleCards());
@@ -17,34 +30,34 @@ function Movies({ isLoading, movies, saveMovie, deleteMovie, saveMovies }) {
 
   function getInitialVisibleCards() {
     const screenWidth = window.innerWidth;
-    if (screenWidth >= 1280) {
-      return 12;
-    } else if (screenWidth >= 768) {
-      return 8;
+    if (screenWidth >= FULL_SCREEN) {
+      return MAX_MOVIES_FULL_SCREEN;
+    } else if (screenWidth >= TABLE_SCREEN) {
+      return MAX_MOVIES_TABLE_SCREEN;
     } else {
-      return 5;
+      return MAX_MOVIES_PHONE_SCREEN;
     }
   }
 
-  function searchResult(query) {
+  function searchResult(query, isShort) {
     if (!query.trim()) {
       setError(MSG_NEED_REQUEST);
       return;
     }
-  
+
     const result = movies.filter(
       (movie) =>
         movie.nameRU.toLowerCase().includes(query.toLowerCase()) ||
         movie.nameEN.toLowerCase().includes(query.toLowerCase())
     );
     const resultShort = movies
-      .filter((film) => film.duration < 40)
+      .filter((film) => film.duration < SHORT_MOVIE)
       .filter(
         (movie) =>
           movie.nameRU.toLowerCase().includes(query.toLowerCase()) ||
           movie.nameEN.toLowerCase().includes(query.toLowerCase())
       );
-    if (!shortFilmsButton) {
+    if (!isShort) {
       if (result.length === 0) {
         setError(MSG_NOT_FOUND);
       } else {
@@ -81,17 +94,20 @@ function Movies({ isLoading, movies, saveMovie, deleteMovie, saveMovies }) {
 
   function getIncrement() {
     const screenWidth = window.innerWidth;
-    if (screenWidth >= 1280) {
-      return 3;
-    } else if (screenWidth <= 1278 && screenWidth >= 766) {
-      return 2;
+    if (screenWidth >= FULL_SCREEN) {
+      return ADD_MOVIES_FULL_SCREEN;
+    } else if (
+      screenWidth <= LESS_FULL_SCREEN &&
+      screenWidth >= LESS_TABLE_SCREEN
+    ) {
+      return ADD_MOVIES_TABLE_SCREEN;
     } else {
-      return 2;
+      return ADD_MOVIES_TABLE_SCREEN;
     }
   }
 
   useEffect(() => {
-    if (searchFilms.length > 12) {
+    if (searchFilms.length > MAX_MOVIES_FULL_SCREEN) {
       setShowButton(true);
     } else {
       setShowButton(false);

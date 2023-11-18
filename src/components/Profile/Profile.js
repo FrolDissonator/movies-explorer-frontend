@@ -4,7 +4,7 @@ import mainApi from "../../utils/MainApi";
 import "./Profile.css";
 import { regEmail } from "../../utils/helpers";
 import {
-  PAGE_LOGIN,
+  PAGE_MAIN,
   ERR_ALREADY_EXISTS,
   MSG_VALID_EMAIL,
   MSG_VALID_NAME,
@@ -77,6 +77,8 @@ function Profile({ onSignOut, isLoading, setIsLoading }) {
         .then((updatedUserInfo) => {
           setName(updatedUserInfo.name);
           setOriginalEmail(updatedUserInfo.email);
+          setUserName(updatedUserInfo.name);
+          setUserEmail(updatedUserInfo.email);
           setIsFormChanged(false);
           setSubmitStatus({
             message: MSG_PROFILE_SUCCESS,
@@ -162,7 +164,7 @@ function Profile({ onSignOut, isLoading, setIsLoading }) {
           Редактировать
         </button>
       </form>
-      <Link className="profile__link" to={PAGE_LOGIN} onClick={onSignOut}>
+      <Link className="profile__link" to={PAGE_MAIN} onClick={onSignOut}>
         Выйти из аккаунта
       </Link>
     </section>
