@@ -7,6 +7,7 @@ import {
   MSG_VALID_EMAIL,
   MSG_VALID_PASSWORD,
   PAGE_REGISTER,
+  MIN_LENGTH_PASSWORD,
 } from "../../utils/constants";
 
 function Login({ onSubmit, handleResultError, resultError, isLoading }) {
@@ -41,7 +42,7 @@ function Login({ onSubmit, handleResultError, resultError, isLoading }) {
 
     const validatePassword = () => {
       if (touched.password || isFormSubmitted) {
-        if (password.length >= 8) {
+        if (password.length >= MIN_LENGTH_PASSWORD) {
           setIsValid((prev) => ({ ...prev, password: true }));
           setErrors((prev) => ({ ...prev, password: "" }));
         } else {

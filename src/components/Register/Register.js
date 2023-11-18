@@ -7,7 +7,10 @@ import {
   MSG_VALID_EMAIL,
   MSG_VALID_PASSWORD,
   MSG_VALID_NAME,
-  PAGE_LOGIN
+  PAGE_LOGIN,
+  MIN_LENGTH_NAME,
+  MAX_LENGTH_NAME,
+  MIN_LENGTH_PASSWORD,
 } from "../../utils/constants";
 
 function Register({ onSubmit, handleResultError, resultError, isLoading }) {
@@ -52,7 +55,7 @@ function Register({ onSubmit, handleResultError, resultError, isLoading }) {
 
     const validatePassword = () => {
       if (touched.password) {
-        if (password.length >= 8) {
+        if (password.length >= MIN_LENGTH_PASSWORD) {
           setIsValid((prev) => ({ ...prev, password: true }));
           setErrors((prev) => ({ ...prev, password: "" }));
         } else {
@@ -67,7 +70,7 @@ function Register({ onSubmit, handleResultError, resultError, isLoading }) {
 
     const validateName = () => {
       if (touched.name) {
-        if (name.length >= 2 && name.length <= 30) {
+        if (name.length >= MIN_LENGTH_NAME && name.length <= MAX_LENGTH_NAME) {
           setIsValid((prev) => ({ ...prev, name: true }));
           setErrors((prev) => ({ ...prev, name: "" }));
         } else {

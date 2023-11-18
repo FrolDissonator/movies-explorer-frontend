@@ -10,7 +10,9 @@ import {
   MSG_VALID_NAME,
   MSG_PROFILE_SUCCESS,
   MSG_ALREADY_EXISTS,
-  MSG_PROFILE_ERR
+  MSG_PROFILE_ERR,
+  MIN_LENGTH_NAME,
+  MAX_LENGTH_NAME,
 } from "../../utils/constants";
 
 function Profile({ onSignOut, isLoading, setIsLoading }) {
@@ -50,7 +52,7 @@ function Profile({ onSignOut, isLoading, setIsLoading }) {
 
     if (name === "name") {
       setEditedName(value);
-      setIsNameValid(value.length >= 2 && value.length <= 30);
+      setIsNameValid(value.length >= MIN_LENGTH_NAME && value.length <= MAX_LENGTH_NAME);
       if (userName !== value) {
         setIsFormChanged(true);
       } else {
@@ -123,9 +125,7 @@ function Profile({ onSignOut, isLoading, setIsLoading }) {
             required
           />
           <span className="profile__error">
-            {isNameValid
-              ? ""
-              : MSG_VALID_NAME}
+            {isNameValid ? "" : MSG_VALID_NAME}
           </span>
         </div>
         <div className="profile__input-container">

@@ -16,6 +16,7 @@ import {
   MAX_MOVIES_PHONE_SCREEN,
   ADD_MOVIES_FULL_SCREEN,
   ADD_MOVIES_TABLE_SCREEN,
+  ADD_MOVIES_PHONE_SCREEN,
   SHORT_MOVIE,
 } from "../../utils/constants";
 
@@ -102,7 +103,7 @@ function Movies({ isLoading, movies, saveMovie, deleteMovie, saveMovies }) {
     ) {
       return ADD_MOVIES_TABLE_SCREEN;
     } else {
-      return ADD_MOVIES_TABLE_SCREEN;
+      return ADD_MOVIES_PHONE_SCREEN;
     }
   }
 
