@@ -1,0 +1,11 @@
+.entrance__button-container {
+    margin-top: 49px;
+    margin-bottom: 16px;
+}
+
+@media screen and (max-width: 767px) {
+    .entrance__button-container {
+        margin-top: 137px;
+        margin-bottom: 14px;
+    }
+}

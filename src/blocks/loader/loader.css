@@ -1,0 +1,17 @@
+.loader {
+    margin: 50px 70px 80px;
+}
+
+@media screen and (max-width: 1279px) {
+    .loader {
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .loader {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}

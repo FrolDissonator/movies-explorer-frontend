@@ -17,7 +17,7 @@
     margin-right: 0;
 }
 
-@media screen and (max-width: 1279px) {
+@media screen and (max-width: 768px) {
     .header__link {
         display: none;
     }

@@ -1,0 +1,8 @@
+.profile__button_disabled {
+    cursor: not-allowed;
+    color: rgba(139, 139, 139, 1);
+}
+
+.profile__button_disabled:hover {
+    opacity: 1;
+}

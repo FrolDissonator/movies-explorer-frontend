@@ -4,6 +4,7 @@
 @import url('../../blocks/search-form/__line/search-form__line.css');
 @import url('../../blocks/search-form/__input/search-form__input.css');
 @import url('../../blocks/search-form/__button/search-form__button.css');
+@import url('../../blocks/search-form/__error/search-from__error.css');
 @import url('../../blocks/search-form/__checkbox-container/search-form__checkbox-container.css');
 @import url('../../blocks/search-form/__checkbox-invisible/search-form__checkbox-invisible.css');
 @import url('../../blocks/search-form/__checkbox-visible/search-form__checkbox-visible.css');

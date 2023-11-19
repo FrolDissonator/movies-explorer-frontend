@@ -1,106 +1,162 @@
-import React from 'react';
-import './Movies.css';
-import SearchForm from '../SearchForm/SearchForm';
-import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import Preloader from '../Preloader/Preloader';
-import wordsAboutDesign from '../../images/card-33-words.jpg';
-import oneHundredYears from '../../images/card-100-years.jpg';
-import banksy from '../../images/card-banksy.jpg';
-import basquiat from '../../images/card-basquiat.jpg';
-import running from '../../images/card-running.jpg';
-import bookSellers from '../../images/card-booksellers.jpg';
-import germany from '../../images/card-germany.jpg';
-import gimmeDanger from '../../images/card-gimme-danger.jpg';
-import janes from '../../images/card-janes.jpg';
-import beforeJump from '../../images/card-before-jump.jpg';
-import harvey from '../../images/card-harvey.jpg';
-import waves from '../../images/card-waves.jpg';
+import React, { useState, useEffect } from "react";
+import "./Movies.css";
+import SearchForm from "../SearchForm/SearchForm";
+import MoviesCardList from "../MoviesCardList/MoviesCardList";
+import Preloader from "../Preloader/Preloader";
+import Loader from "../Loader/Loader";
+import {
+  MSG_NOT_FOUND,
+  MSG_NEED_REQUEST,
+  FULL_SCREEN,
+  LESS_FULL_SCREEN,
+  TABLE_SCREEN,
+  LESS_TABLE_SCREEN,
+  MAX_MOVIES_FULL_SCREEN,
+  MAX_MOVIES_TABLE_SCREEN,
+  MAX_MOVIES_PHONE_SCREEN,
+  ADD_MOVIES_FULL_SCREEN,
+  ADD_MOVIES_TABLE_SCREEN,
+  ADD_MOVIES_PHONE_SCREEN,
+  SHORT_MOVIE,
+} from "../../utils/constants";
 
-function Movies() {
-    const [movies] = React.useState([
-            {
-                id: 1,
-                title: '33 слова о дизайне',
-                duration: '1ч 47м',
-                image: wordsAboutDesign
-            },
-            {
-                id: 2,
-                title: 'Киноальманах «100 лет дизайна»',
-                duration: '1ч 3м',
-                image: oneHundredYears
-            },
-            {
-                id: 3,
-                title: 'В погоне за Бенкси',
-                duration: '1ч 42м',
-                image: banksy
-            },
-            {
-                id: 4,
-                title: 'Баския: Взрыв реальности',
-                duration: '1ч 21м',
-                image: basquiat
-            },
-            {
-                id: 5,
-                title: 'Бег это свобода',
-                duration: '1ч 44м',
-                image: running
-            },
-            {
-                id: 6,
-                title: 'Книготорговцы',
-                duration: '1ч 37м',
-                image: bookSellers
-            },
-            {
-                id: 7,
-                title: 'Когда я думаю о Германии ночью',
-                duration: '1ч 56м',
-                image: germany
-            },
-            {
-                id: 8,
-                title: 'Gimme Danger: История Игги и The Stooge...',
-                duration: '1ч 59м',
-                image: gimmeDanger
-            },
-            {
-                id: 9,
-                title: 'Дженис: Маленькая девочка грустит',
-                duration: '1ч 42м',
-                image: janes
-            },
-            {
-                id: 10,
-                title: 'Соберись перед прыжком',
-                duration: '1ч 10м',
-                image: beforeJump
-            },
-            {
-                id: 11,
-                title: 'Пи Джей Харви: A dog called money',
-                duration: '1ч 4м',
-                image: harvey
-            },
-            {
-                id: 12,
-                title: 'По волнам: Искусство звука в кино',
-                duration: '1ч 7м',
-                image: waves
-            },
-    ]);
+function Movies({ isLoading, movies, saveMovie, deleteMovie, saveMovies }) {
+  const [visibleCards, setVisibleCards] = useState(getInitialVisibleCards());
+  const [searchQuery, setSearchQuery] = useState("");
+  const [error, setError] = useState("");
+  const [searchFilms, setSearchFilms] = useState([]);
+  const [shortFilmsButton, setShortFilmsButton] = useState(false);
+  const [showButton, setShowButton] = useState("");
+  const [shortSearchFilms, setShortSearchFilms] = useState([]);
 
-    const shouldShowButton = movies.length > 9;
+  function getInitialVisibleCards() {
+    const screenWidth = window.innerWidth;
+    if (screenWidth >= FULL_SCREEN) {
+      return MAX_MOVIES_FULL_SCREEN;
+    } else if (screenWidth >= TABLE_SCREEN) {
+      return MAX_MOVIES_TABLE_SCREEN;
+    } else {
+      return MAX_MOVIES_PHONE_SCREEN;
+    }
+  }
 
-    return(
-        <div className='movies'>
-            <SearchForm />
-            <MoviesCardList movies={movies} />
-            <Preloader showButton={shouldShowButton} />
-        </div>
+  function searchResult(query, isShort) {
+    if (!query.trim()) {
+      setError(MSG_NEED_REQUEST);
+      return;
+    }
+
+    const result = movies.filter(
+      (movie) =>
+        movie.nameRU.toLowerCase().includes(query.toLowerCase()) ||
+        movie.nameEN.toLowerCase().includes(query.toLowerCase())
     );
+    const resultShort = movies
+      .filter((film) => film.duration < SHORT_MOVIE)
+      .filter(
+        (movie) =>
+          movie.nameRU.toLowerCase().includes(query.toLowerCase()) ||
+          movie.nameEN.toLowerCase().includes(query.toLowerCase())
+      );
+    if (!isShort) {
+      if (result.length === 0) {
+        setError(MSG_NOT_FOUND);
+      } else {
+        setError("");
+      }
+    } else {
+      if (resultShort.length === 0) {
+        setError(MSG_NOT_FOUND);
+      } else {
+        setError("");
+      }
+    }
+    setSearchFilms(result);
+    localStorage.setItem("searchFilms", JSON.stringify(result));
+    setShortSearchFilms(resultShort);
+    localStorage.setItem("shortSearchFilms", JSON.stringify(resultShort));
+  }
+
+  useEffect(() => {
+    function handleResize() {
+      setVisibleCards(getInitialVisibleCards());
+    }
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const handleShowMore = () => {
+    setVisibleCards((prevVisibleCards) => prevVisibleCards + getIncrement());
+  };
+
+  function getIncrement() {
+    const screenWidth = window.innerWidth;
+    if (screenWidth >= FULL_SCREEN) {
+      return ADD_MOVIES_FULL_SCREEN;
+    } else if (
+      screenWidth <= LESS_FULL_SCREEN &&
+      screenWidth >= LESS_TABLE_SCREEN
+    ) {
+      return ADD_MOVIES_TABLE_SCREEN;
+    } else {
+      return ADD_MOVIES_PHONE_SCREEN;
+    }
+  }
+
+  useEffect(() => {
+    if (searchFilms.length > MAX_MOVIES_FULL_SCREEN) {
+      setShowButton(true);
+    } else {
+      setShowButton(false);
+    }
+  }, [searchFilms]);
+
+  useEffect(() => {
+    setSearchQuery(localStorage.getItem("searchQuery"));
+    setSearchFilms(JSON.parse(localStorage.getItem("searchFilms")) || []);
+    setShortSearchFilms(
+      JSON.parse(localStorage.getItem("shortSearchFilms")) || []
+    );
+    setShortFilmsButton(
+      localStorage.getItem("checkBox") === "true" ? true : false
+    );
+  }, []);
+
+  return (
+    <div className="movies">
+      <SearchForm
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+        error={error}
+        setError={setError}
+        searchResult={searchResult}
+        shortFilmsButton={shortFilmsButton}
+        setShortFilmsButton={setShortFilmsButton}
+      />
+      {isLoading && <Preloader />}
+      {!isLoading && (
+        <MoviesCardList
+          movies={
+            !shortFilmsButton
+              ? searchFilms.slice(0, visibleCards)
+              : shortSearchFilms.slice(0, visibleCards)
+          }
+          saveMovie={saveMovie}
+          deleteMovie={deleteMovie}
+          saveMovies={saveMovies}
+        />
+      )}
+      {!shortFilmsButton
+        ? searchFilms.length > visibleCards &&
+          showButton && <Loader showButton={true} onClick={handleShowMore} />
+        : shortSearchFilms.length > visibleCards &&
+          showButton && <Loader showButton={true} onClick={handleShowMore} />}
+    </div>
+  );
 }
 
 export default Movies;

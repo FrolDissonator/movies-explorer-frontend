@@ -2,19 +2,22 @@
     background-color: rgba(66, 133, 244, 1);
     color: rgba(255, 255, 255, 1);
     min-height: 45px;
+    width: 100%;
     border-radius: 3px;
     font-size: 14px;
     line-height: 1.2;
     font-weight: 500;
     border: none;
-    margin-top: 69px;
-    margin-bottom: 16px;
+    cursor: pointer;
+    transition: opacity 4ms;
+}
+
+.entrance__button:hover {
+    opacity: 0.8;
 }
 
 @media screen and (max-width: 767px) {
     .entrance__button {
         font-size: 12px;
-        margin-top: 157px;
-        margin-bottom: 14px;
     }
 }

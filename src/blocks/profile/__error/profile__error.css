@@ -1,0 +1,9 @@
+.profile__error {
+    min-height: 16px;
+    font-size: 10px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: rgba(238, 52, 101, 1);
+    display: flex;
+    align-items: center;
+}

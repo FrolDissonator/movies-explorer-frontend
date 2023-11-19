@@ -1,9 +1,10 @@
 .profile__input-container {
     display: flex;
-    align-items: flex-start;
+    flex-direction: column;
     border-bottom: 1px solid rgba(66, 66, 66, 1);
     margin-bottom: 17px;
     position: relative;
+    box-sizing: border-box;
 }
 
 .profile__input-container:last-of-type {
